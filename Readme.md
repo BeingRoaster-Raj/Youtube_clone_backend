@@ -28,3 +28,23 @@ as we make middleware we can make methods  ref.- user.model
 
 
 jwt == it is a bearer token,it means this acts like a key(lock)
+
+
+
+## Cloudinary - Now we will look for this 
+
+When we upload file you need two packages 
+#### express-fileupload / Multer(mostly used)
+
+installed multer and cloudinary 
+
+so we will upload file by multer to cloudinary  
+
+
+Now write the code for to upload file - ref.(cloudinary)
+
+
+Now we will make middleware by using Multer
+
+
+### Now configuration Setting is over
