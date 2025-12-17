@@ -48,3 +48,11 @@ Now we will make middleware by using Multer
 
 
 ### Now configuration Setting is over
+
+
+## Now we will write controller - logic understanding
+
+
+## Creating Routes
+After making methods -> To make it run -> hits by url -> for this we make routes
+

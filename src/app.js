@@ -29,4 +29,17 @@ app.use(express.static("public"))
 
 app.use(cookieParser())
 
+
+
+// routes import
+
+import userRouter from "./routes/user.routes.js"
+
+// route declaration
+// app.use("/users", userRouter)    // we are calling by using milldeware
+
+app.use("/api/v1/users", userRouter)
+
+// http://localhost:8000/api/v1/users/register
+
 export { app };
