@@ -2,7 +2,9 @@
 
 const asyncHandler = (requestHandler) => {
     return (req, res, next) => {
-        Promise.resolve(requestHandler(req, res, next)).catch.apply((err) => next(err)) // gpt use karke samajh lo adv. syntax
+        Promise
+        .resolve(requestHandler(req, res, next))
+        .catch((err) => next(err)) // gpt use karke samajh lo adv. syntax
     }
 }
 

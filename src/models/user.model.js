@@ -20,7 +20,7 @@ const userSchema = new Schema(
             lowercase: true,
             trim: true
         },
-        fullname: {
+        fullName: {
             type: String,
             required: true,
             trim: true,
@@ -54,7 +54,7 @@ const userSchema = new Schema(
 
 userSchema.pre("save", async function(next){
     if(!this.isModified("password")) return next()  // ye check kar raha hai ki password field modify hua hai ya nahi
-    this.password = bcrypt.hash(this.password, 10)
+    this.password = await bcrypt.hash(this.password, 10)
     next()   // whenever the data is being saved it will save password with it ---> so we have to modified it like whenever we send the modification of password field only then it should be hashed
 })
 // we have to create some methods so that we can ask the user whether the password is correct or not

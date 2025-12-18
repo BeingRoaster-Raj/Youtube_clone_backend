@@ -56,3 +56,6 @@ Now we will make middleware by using Multer
 ## Creating Routes
 After making methods -> To make it run -> hits by url -> for this we make routes
 
+
+
+Now we will make/check user  
