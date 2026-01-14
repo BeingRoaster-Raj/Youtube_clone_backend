@@ -9,7 +9,7 @@ import { app } from "./app.js";
 dotenv.config({
     path: './.env'
 })
-
+// console.log("MONGO URL =", process.env.MONGODB_URL);
 connectDB()
 .then(() => {
     app.listen(process.env.PORT || 8000, () => {

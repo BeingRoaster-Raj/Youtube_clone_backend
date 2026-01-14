@@ -6,7 +6,7 @@ const connectDB = async () => {
     try{
 // console.log("ENV RAW URL =>", `"${process.env.MONGODB_URL}"`);
 
-        const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`);
+        const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URL}`);
         console.log(`\n MongoDBconnected !! DB Host: ${connectionInstance.connection.host}`);
         // ASSIGNMENT ----> iss connectionInstance ko ek baar console.log kar lo to tumhe pata chalega ki ye 
         // ek object return kar raha hai jisme bahut saari information hoti hai jaise ki host, port, dbname etc.
