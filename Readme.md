@@ -59,3 +59,8 @@ After making methods -> To make it run -> hits by url -> for this we make routes
 
 
 Now we will make/check user  
+
+
+### Now logged in user is ready (ref. user.controller)
+
+### Now logout option is created - secured (ref. auth.middleware, user.routes, user.controller)
