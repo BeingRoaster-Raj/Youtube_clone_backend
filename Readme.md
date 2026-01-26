@@ -64,3 +64,5 @@ Now we will make/check user
 ### Now logged in user is ready (ref. user.controller)
 
 ### Now logout option is created - secured (ref. auth.middleware, user.routes, user.controller)
+
+when you are sending request from postmas to login or logout look for that whether its a post or get to avoid errors so in my case check user.routes
