@@ -32,5 +32,17 @@ import fs from 'fs'  // fs-file system module->to handle files in nodejs-> read,
         }
      }
 
-     export { uploadOnCloudinary };
+     const deleteFromCloudinary = async (public_id) => {
+        try{
+            if(!public_id) return null;
+            const response = await cloudinary.uploader.destroy(public_id);
+            console.log("File deleted from Cloudinary");
+            return response;
+        }catch(error){
+            console.log("Error while deleting file from Cloudinary", error);
+            return null;
+        }
+     }
+
+     export { uploadOnCloudinary, deleteFromCloudinary };
          
