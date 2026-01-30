@@ -53,13 +53,12 @@ const userSchema = new Schema(
 )
 
 userSchema.pre("save", async function(){
-    if(!this.isModified("password")) return;  // ye check kar raha hai ki password field modify hua hai ya nahi
-    this.password = await bcrypt.hash(this.password, 10)   // whenever the data is being saved it will save password with it ---> so we have to modified it like whenever we send the modification of password field only then it should be hashed
+    if(!this.isModified("password")) return;  // if password is not modified then return
+    this.password = await bcrypt.hash(this.password, 10)  // 10 rounds of salting
 })
-// we have to create some methods so that we can ask the user whether the password is correct or not
 
 userSchema.methods.isPasswordCorrect = async function(password){
-   return await bcrypt.compare(password, this.password)   // encrypted password ko compare karega
+   return await bcrypt.compare(password, this.password)   // compare ecrypted password with plain password
 }
 
 userSchema.methods.generateAccessToken = function(){

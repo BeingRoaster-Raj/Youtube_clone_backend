@@ -24,22 +24,12 @@ const generateAccessAndRefreshToken = async(userId) => {
 }
 
 const registerUser = asyncHandler( async(req, res) => {
-    // get user details from frontend
-    // validation have to do - not empty
-    // Check if user already exist: by username or email
-    // Check for images, check for avatar
-    // upload them to cloudinary, avatar
-    // Crate user object - create entry in db
-    // Remove password and refresh token field from response
-    // check for user creation
-    // return response(res)
 
     // console.log("req.body:", req.body);
     // console.log("req.files:", req.files);
 
     const { fullName, email, username, password} = req.body     // data coming from "Form and json"
     // console.log("Received fields:", { fullName, email, username, password });
-    // you can print all the details like fullname, password, username and all
 
     if(
         [fullName, email, username, password].some((field) => field?.trim() === "")
@@ -95,15 +85,6 @@ const registerUser = asyncHandler( async(req, res) => {
 })
 
 const loginUser = asyncHandler( async(req, res) => {
-    // req.body se email and password le lo ya data le lo
-    // username or email se user ko dhundo
-    // agar user nahi mila to error throw karo
-    // agar mila to password ko check karo
-    // agar password match nahi kiya to error throw karo
-    // agar match kar gaya to access token and refresh token generate karo
-    // refresh token ko db me save kar do
-    // response me access token bhej do
-    // send cokkie with refresh token
 
     const {email, username, password} = req.body
     console.log(email);
@@ -309,8 +290,6 @@ const updateUserAvatar = asyncHandler(async(req, res) =>{
     .json(new ApiResponse(200, user, "Avatar updated successfully"))
 })
 
-// TODO: delete old image from cloudinary
-
 const deleteUserAvatar = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
@@ -444,7 +423,6 @@ const getUserChannelProfile = asyncHandler(async(req, res) => {
 })
 
 const getWatchHistory = asyncHandler(async(req, res) => {
-    // req.user._id // Here we get the user id/ objectID from mongoDB and it is in the form of string and we have used mongoose here so it autmatically converts string to objectID
     const user = await User.aggregate([
         {
             $match: {

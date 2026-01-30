@@ -23,7 +23,7 @@ export const veriftJWT = asyncHandler( async(req, _, next) => {  // if res is em
         }
     
         req.user = user;
-        next()    // to go to next middleware or controller(ref. user.routes.js)
+        next()  // next middleware
     } catch (error) {
         throw new ApiError(401, error?.message || "Invalid access token");
         
