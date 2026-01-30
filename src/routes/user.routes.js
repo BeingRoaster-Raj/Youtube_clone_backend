@@ -39,7 +39,7 @@ router.route("/logout").post(veriftJWT, logoutUser)
 router.route("/refresh-token").post(refreshAccessToken)  // to be implemented
 router.route("/update-avatar").patch(veriftJWT,upload.single("avatar"),updateUserAvatar) // to support both put and post methods in updating avatar
 router.route("/delete-avatar").delete(veriftJWT,deleteUserAvatar) // delete user avatar route
-router.route("/cover-image").patch(veriftJWT,upload.single("/coverImage"), updateUserCoverImage)
+router.route("/cover-image").patch(veriftJWT,upload.single("coverImage"), updateUserCoverImage)
 router.route("/change-password").post(veriftJWT,changeCurrentUserPassword) // change current user password route
 router.route("/current-user").get(veriftJWT,getCurrentUser)
 router.route("/update-account").patch(veriftJWT, updateAccountDetails) // update account details route

@@ -1,68 +1,126 @@
-Youtube backend trial and still trying with java script
+# YouTube Clone Backend
 
+A backend API for a YouTube-like video streaming platform built with Node.js, Express, and MongoDB.
 
+## Features
 
-# Models -> Formed
-## User.model & video.model
+- User authentication and authorization (JWT-based)
+- User registration and login with password encryption
+- Video upload and management
+- User subscription system
+- File uploads to Cloudinary
+- Secure API endpoints with middleware authentication
+- Pagination support for video queries using mongoose-aggregate-paginate-v2
 
-After that use or install mongoose-aggregate-paginate-v2  ---> this allows us to write aggregation qurries
+## Tech Stack
 
-we will use this in video.model
+- **Runtime:** Node.js
+- **Framework:** Express.js
+- **Database:** MongoDB with Mongoose ODM
+- **Authentication:** JWT (jsonwebtoken)
+- **Password Hashing:** bcryptjs
+- **File Upload:** Multer + Cloudinary
+- **Pagination:** mongoose-aggregate-paginate-v2
 
-### Password Encryption
+## Installation
 
-now we will look towards some packages --> bcrypt(A bcrypt library for NodeJs) and bcryptjs(Optimized bcrypt in plain with zero dependencies. Compatible to "bcrypt". Mostly used).
-bcrypt => A library to help you hash password
+### Prerequisites
+- Node.js (v14+)
+- MongoDB
+- Cloudinary account (for file uploads)
 
+### Setup
 
-For token we will use jsonwebtoken --> It used to encrypt the data
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd Youtube_clone_Backend
+```
 
---> If you want that how tokens work then visit JWT.io
+2. Install dependencies
+```bash
+npm install
+```
 
+3. Create a `.env` file in the root directory and add:
+```
+PORT=8000
+MONGODB_URI=<your-mongodb-connection-string>
+JWT_SECRET=<your-jwt-secret>
+CLOUDINARY_NAME=<your-cloudinary-name>
+CLOUDINARY_API_KEY=<your-api-key>
+CLOUDINARY_API_SECRET=<your-api-secret>
+```
 
-After all this we cannot encrypt data directly so we will use some hooks of middleware - Pre(just before saving the data we can run any code by using this - usually password encryption),
+## Project Structure
 
+```
+src/
+├── app.js                 # Express app configuration
+├── index.js              # Server entry point
+├── constants.js          # Application constants
+├── controllers/          # Business logic
+│   └── user.controller.js
+├── models/               # MongoDB schemas
+│   ├── user.model.js
+│   ├── video.model.js
+│   └── subscription.model.js
+├── routes/               # API endpoints
+│   └── user.routes.js
+├── middlewares/          # Custom middleware
+│   ├── auth.middleware.js
+│   └── Multer.middleware.js
+├── db/                   # Database connection
+│   └── index.js
+└── utils/                # Utility functions
+    ├── asyncHandler.js
+    ├── ApiResponse.js
+    ├── ApiError.js
+    └── cloudinary.js
+```
 
+## API Endpoints
 
-as we make middleware we can make methods  ref.- user.model
+### User Routes
+- `POST /api/users/register` - Register new user
+- `POST /api/users/login` - Login user
+- `POST /api/users/logout` - Logout user (protected)
+- `GET /api/users/profile` - Get user profile (protected)
+- also different routes 
 
+## Database Models
 
-jwt == it is a bearer token,it means this acts like a key(lock)
+### User Model
+- Stores user information
+- Password hashing using bcryptjs pre-hooks
+- JWT token generation methods
 
+### Video Model
+- Video metadata and content
+- Aggregation queries with pagination support
 
+### Subscription Model
+- User subscription relationships
 
-## Cloudinary - Now we will look for this 
+## Authentication
 
-When we upload file you need two packages 
-#### express-fileupload / Multer(mostly used)
+The API uses JWT (JSON Web Tokens) for authentication. Include the token in the Authorization header:
+```
+Authorization: Bearer <your-jwt-token>
+```
 
-installed multer and cloudinary 
+## Running the Project
 
-so we will upload file by multer to cloudinary  
+```bash
+npm start
+```
 
+The server will start on the port specified in your `.env` file (default: 8000).
 
-Now write the code for to upload file - ref.(cloudinary)
+## File Uploads
 
+Files are uploaded via Multer middleware and stored on Cloudinary. Configure Cloudinary credentials in `.env`.
 
-Now we will make middleware by using Multer
+## Contributing
 
-
-### Now configuration Setting is over
-
-
-## Now we will write controller - logic understanding
-
-
-## Creating Routes
-After making methods -> To make it run -> hits by url -> for this we make routes
-
-
-
-Now we will make/check user  
-
-
-### Now logged in user is ready (ref. user.controller)
-
-### Now logout option is created - secured (ref. auth.middleware, user.routes, user.controller)
-
-when you are sending request from postmas to login or logout look for that whether its a post or get to avoid errors so in my case check user.routes
+Feel free to submit issues and enhancement requests!
